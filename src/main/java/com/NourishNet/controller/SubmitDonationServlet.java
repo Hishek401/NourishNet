@@ -38,7 +38,7 @@ public class SubmitDonationServlet extends HttpServlet {
         request.setAttribute("pageTitle", "Submit Donation");
         request.setAttribute("pageType", "donor");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/submit-donation.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/submit-donation.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -64,7 +64,7 @@ public class SubmitDonationServlet extends HttpServlet {
             request.setAttribute("recipients", recipientDAO.getAllRecipients());
             request.setAttribute("pageTitle", "Submit Donation");
             request.setAttribute("pageType", "donor");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/submit-donation.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/submit-donation.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -89,7 +89,7 @@ public class SubmitDonationServlet extends HttpServlet {
             request.setAttribute("recipients", recipientDAO.getAllRecipients());
             request.setAttribute("pageTitle", "Submit Donation");
             request.setAttribute("pageType", "donor");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/submit-donation.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/submit-donation.jsp");
             dispatcher.forward(request, response);
         }
     }

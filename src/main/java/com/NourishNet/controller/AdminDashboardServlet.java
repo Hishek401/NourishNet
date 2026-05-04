@@ -38,6 +38,22 @@ public class AdminDashboardServlet extends HttpServlet {
         // Search parameter
         String search = request.getParameter("search");
 
+        // If an editId is provided, show the edit page instead of the dashboard
+        String editIdStr = request.getParameter("editId");
+        if (editIdStr != null && !editIdStr.isEmpty()) {
+            int editId = Integer.parseInt(editIdStr);
+            Donation donation = donationService.getDonationById(editId);
+            if (donation != null) {
+                request.setAttribute("donation", donation);
+                request.setAttribute("recipients", recipientDAO.getAllRecipients());
+                request.setAttribute("pageTitle", "Edit Donation");
+                request.setAttribute("pageType", "admin");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/edit-donation.jsp");
+                dispatcher.forward(request, response);
+                return;
+            }
+        }
+
         List<User> donors = userService.getAllDonors();
         List<Donation> donations = donationService.getAllDonations(search);
         List<Recipient> recipients = recipientDAO.getAllRecipients();
@@ -63,7 +79,7 @@ public class AdminDashboardServlet extends HttpServlet {
         request.setAttribute("pageTitle", "Admin Dashboard");
         request.setAttribute("pageType", "admin");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/admin-dashboard.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/admin-dashboard.jsp");
         dispatcher.forward(request, response);
     }
 

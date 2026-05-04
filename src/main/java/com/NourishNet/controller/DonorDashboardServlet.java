@@ -49,7 +49,7 @@ public class DonorDashboardServlet extends HttpServlet {
         request.setAttribute("pageTitle", "Donor Dashboard");
         request.setAttribute("pageType", "donor");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/donor-dashboard.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/donor-dashboard.jsp");
         dispatcher.forward(request, response);
     }
 

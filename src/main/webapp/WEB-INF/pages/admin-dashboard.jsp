@@ -181,12 +181,13 @@
                                         <button type="submit" class="btn btn-sm btn-reject">✗</button>
                                     </form>
                                 <% } %>
-                                <form method="POST" action="<%= ctx %>/admin/dashboard"
-                                      onsubmit="return confirm('Delete this donation?');">
-                                    <input type="hidden" name="action" value="deleteDonation">
-                                    <input type="hidden" name="donationId" value="<%= d.getId() %>">
-                                    <button type="submit" class="btn btn-sm btn-delete">🗑</button>
-                                </form>
+                                    <a href="<%= ctx %>/admin/dashboard?editId=<%= d.getId() %>" class="btn btn-sm btn-secondary">Edit</a>
+                                    <form method="POST" action="<%= ctx %>/admin/dashboard"
+                                          onsubmit="return confirm('Delete this donation?');">
+                                        <input type="hidden" name="action" value="deleteDonation">
+                                        <input type="hidden" name="donationId" value="<%= d.getId() %>">
+                                        <button type="submit" class="btn btn-sm btn-delete">🗑</button>
+                                    </form>
                             </td>
                         </tr>
                         <% } %>

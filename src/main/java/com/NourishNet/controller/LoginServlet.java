@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 
         request.setAttribute("pageTitle", "Login");
         request.setAttribute("pageType", "auth");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/login.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/login.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("error", errorHolder[0]);
             request.setAttribute("pageTitle", "Login");
             request.setAttribute("pageType", "auth");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/login.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/login.jsp");
             dispatcher.forward(request, response);
         }
     }

@@ -36,7 +36,7 @@ public class ProfileServlet extends HttpServlet {
         request.setAttribute("pageTitle", "My Profile");
         request.setAttribute("pageType", "donor");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/profile.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/profile.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -66,7 +66,7 @@ public class ProfileServlet extends HttpServlet {
         request.setAttribute("pageTitle", "My Profile");
         request.setAttribute("pageType", "donor");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/profile.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/profile.jsp");
         dispatcher.forward(request, response);
     }
 }

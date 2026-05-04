@@ -28,7 +28,7 @@ public class RegisterServlet extends HttpServlet {
 
         request.setAttribute("pageTitle", "Register");
         request.setAttribute("pageType", "auth");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/register.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/register.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("error", "Passwords do not match!");
             request.setAttribute("pageTitle", "Register");
             request.setAttribute("pageType", "auth");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/register.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/register.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -63,7 +63,7 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("error", error);
             request.setAttribute("pageTitle", "Register");
             request.setAttribute("pageType", "auth");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/register.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/register.jsp");
             dispatcher.forward(request, response);
         }
     }

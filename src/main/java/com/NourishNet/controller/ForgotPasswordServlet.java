@@ -29,7 +29,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         request.setAttribute("pageTitle", "Forgot Password");
         request.setAttribute("pageType", "auth");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/forgot-password.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/forgot-password.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -49,7 +49,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             request.setAttribute("error", error);
             request.setAttribute("pageTitle", "Forgot Password");
             request.setAttribute("pageType", "auth");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/forgot-password.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/forgot-password.jsp");
             dispatcher.forward(request, response);
         }
     }

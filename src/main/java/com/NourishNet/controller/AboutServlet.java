@@ -23,7 +23,7 @@ public class AboutServlet extends HttpServlet {
         request.setAttribute("pageTitle", "About Us");
         request.setAttribute("pageType", "public");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/about.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/about.jsp");
         dispatcher.forward(request, response);
     }
 }

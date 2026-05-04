@@ -30,7 +30,7 @@ public class ChangePasswordServlet extends HttpServlet {
         request.setAttribute("pageTitle", "Change Password");
         request.setAttribute("pageType", "donor");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/change-password.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/change-password.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -56,7 +56,7 @@ public class ChangePasswordServlet extends HttpServlet {
         request.setAttribute("pageTitle", "Change Password");
         request.setAttribute("pageType", "donor");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/change-password.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/change-password.jsp");
         dispatcher.forward(request, response);
     }
 }
