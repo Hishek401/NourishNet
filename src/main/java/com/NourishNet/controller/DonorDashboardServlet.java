@@ -18,7 +18,6 @@ import com.NourishNet.service.DonationService;
  * 
  * URL: /donor/dashboard
  */
-@WebServlet("/donor/dashboard")
 public class DonorDashboardServlet extends HttpServlet {
 
     private DonationService donationService = new DonationService();

@@ -17,7 +17,6 @@ import com.NourishNet.service.UserService;
  * GET  → Show the registration form
  * POST → Validate and create a new account
  */
-@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
     private UserService userService = new UserService();

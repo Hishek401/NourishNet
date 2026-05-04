@@ -18,7 +18,6 @@ import com.NourishNet.service.UserService;
  * GET  → Show change password form
  * POST → Process password change
  */
-@WebServlet("/donor/change-password")
 public class ChangePasswordServlet extends HttpServlet {
 
     private UserService userService = new UserService();

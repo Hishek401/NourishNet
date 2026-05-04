@@ -61,11 +61,27 @@ public class UserDAO {
 
     /** Get all donors (role = 'donor'). */
     public List<User> getAllDonors() {
+        return searchDonors(null);
+    }
+
+    /** Search donors by name or email. */
+    public List<User> searchDonors(String query) {
         List<User> donors = new ArrayList<>();
-        String sql = "SELECT * FROM users WHERE role = 'donor' ORDER BY created_at DESC";
+        String sql = "SELECT * FROM users WHERE role = 'donor'";
+        
+        if (query != null && !query.trim().isEmpty()) {
+            sql += " AND (full_name LIKE ? OR email LIKE ?)";
+        }
+        sql += " ORDER BY created_at DESC";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            if (query != null && !query.trim().isEmpty()) {
+                String searchPattern = "%" + query.trim() + "%";
+                stmt.setString(1, searchPattern);
+                stmt.setString(2, searchPattern);
+            }
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

@@ -24,7 +24,6 @@ import com.NourishNet.dao.RecipientDAO;
  * GET  → Show stats, all donations, all donors, recipients
  * POST → Handle approve/reject/delete/unlock/create/update actions
  */
-@WebServlet("/admin/dashboard")
 public class AdminDashboardServlet extends HttpServlet {
 
     private UserService userService = new UserService();
@@ -35,8 +34,9 @@ public class AdminDashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Search parameter
+        // Search parameters
         String search = request.getParameter("search");
+        String donorSearch = request.getParameter("donorSearch");
 
         // If an editId is provided, show the edit page instead of the dashboard
         String editIdStr = request.getParameter("editId");
@@ -54,7 +54,7 @@ public class AdminDashboardServlet extends HttpServlet {
             }
         }
 
-        List<User> donors = userService.getAllDonors();
+        List<User> donors = userService.searchDonors(donorSearch);
         List<Donation> donations = donationService.getAllDonations(search);
         List<Recipient> recipients = recipientDAO.getAllRecipients();
 
@@ -75,6 +75,7 @@ public class AdminDashboardServlet extends HttpServlet {
         request.setAttribute("rejectedCount", rejectedCount);
         request.setAttribute("recipientCount", recipientCount);
         request.setAttribute("searchQuery", search);
+        request.setAttribute("donorSearchQuery", donorSearch);
 
         request.setAttribute("pageTitle", "Admin Dashboard");
         request.setAttribute("pageType", "admin");
@@ -101,21 +102,6 @@ public class AdminDashboardServlet extends HttpServlet {
         } else if ("unlockAccount".equals(action)) {
             int userId = Integer.parseInt(request.getParameter("userId"));
             userService.unlockAccount(userId);
-
-        } else if ("createDonation".equals(action)) {
-            // Admin creating a donation record
-            Donation d = new Donation();
-            d.setUserId(Integer.parseInt(request.getParameter("userId")));
-            d.setFoodItem(request.getParameter("foodItem"));
-            d.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-            d.setUnit(request.getParameter("unit"));
-            d.setCategory(request.getParameter("category"));
-            d.setExpiryDate(request.getParameter("expiryDate"));
-            String recipientIdStr = request.getParameter("recipientId");
-            if (recipientIdStr != null && !recipientIdStr.isEmpty()) {
-                d.setRecipientId(Integer.parseInt(recipientIdStr));
-            }
-            donationService.addDonation(d);
 
         } else if ("updateDonation".equals(action)) {
             // Admin editing donation details

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isErrorPage="true"%>
 <%-- 500.jsp - Internal Server Error Page --%>
-<%@ include file="../common/header.jsp" %>
+<%@ include file="../header.jsp" %>
 
     <div class="dashboard-container">
         <div class="empty-state">
@@ -11,4 +11,4 @@
         </div>
     </div>
 
-<%@ include file="../common/footer.jsp" %>
+<%@ include file="../footer.jsp" %>

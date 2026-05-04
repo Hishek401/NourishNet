@@ -19,7 +19,6 @@ import com.NourishNet.service.UserService;
  * GET  → Show the login form
  * POST → Check credentials and log the user in
  */
-@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     private UserService userService = new UserService();

@@ -56,21 +56,20 @@ CREATE TABLE IF NOT EXISTS donations (
 -- Step 6: Insert seed data
 -- NOTE: Passwords below are AES encrypted using AESUtil.java
 -- To regenerate, run: java com.NourishNet.util.AESUtil
--- admin123 encrypted = bSvLOVE7MNScmnFkCrxyTw==
--- donor123 encrypted = xLY2VTjfMbR1x4LMs5mJOQ==
--- password1 encrypted = similar encrypted string
+-- admin123 encrypted = gP0Kq/gzrx/nTdVzVzWl6A==
+-- donor123 encrypted = lzv2CIzzpkOHyI5bqCs/ug==
 
 INSERT INTO users (full_name, email, password, phone, address, role)
-VALUES ('Admin User', 'admin@nourishnet.com', 'bSvLOVE7MNScmnFkCrxyTw==', '9800000000', 'Islington College, Kamal Marg', 'admin');
+VALUES ('Admin User', 'admin@nourishnet.com', 'gP0Kq/gzrx/nTdVzVzWl6A==', '9800000000', 'Islington College, Kamal Marg', 'admin');
 
 INSERT INTO users (full_name, email, password, phone, address, role)
-VALUES ('John Donor', 'john@example.com', 'xLY2VTjfMbR1x4LMs5mJOQ==', '9811111111', 'Kathmandu, Thamel', 'donor');
+VALUES ('John Donor', 'john@example.com', 'lzv2CIzzpkOHyI5bqCs/ug==', '9811111111', 'Kathmandu, Thamel', 'donor');
 
 INSERT INTO users (full_name, email, password, phone, address, role)
-VALUES ('Sita Sharma', 'sita@example.com', 'xLY2VTjfMbR1x4LMs5mJOQ==', '9822222222', 'Lalitpur, Patan', 'donor');
+VALUES ('Sita Sharma', 'sita@example.com', 'lzv2CIzzpkOHyI5bqCs/ug==', '9822222222', 'Lalitpur, Patan', 'donor');
 
 INSERT INTO users (full_name, email, password, phone, address, role)
-VALUES ('Ram Thapa', 'ram@example.com', 'xLY2VTjfMbR1x4LMs5mJOQ==', '9833333333', 'Bhaktapur, Durbar Square', 'donor');
+VALUES ('Ram Thapa', 'ram@example.com', 'lzv2CIzzpkOHyI5bqCs/ug==', '9833333333', 'Bhaktapur, Durbar Square', 'donor');
 
 -- Seed recipients
 INSERT INTO recipients (name, email, phone, address, organization_type)

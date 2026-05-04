@@ -2,13 +2,13 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.NourishNet.model.Donation" %>
 <%@ page import="com.NourishNet.model.Recipient" %>
-<%-- edit-donation.jsp - Admin page to edit donation details --%>
+<%-- donor-edit-donation.jsp - Donor page to edit their donation --%>
 <%@ include file="header.jsp" %>
 
     <div class="dashboard-container">
         <div class="dashboard-header">
             <h1>Edit Donation</h1>
-            <a href="<%= ctx %>/admin/dashboard" class="btn btn-secondary">← Back to Dashboard</a>
+            <a href="<%= ctx %>/donor/dashboard" class="btn btn-secondary">← Back to Dashboard</a>
         </div>
 
         <% if (request.getAttribute("error") != null) { %>
@@ -22,14 +22,8 @@
                 Donation d = (Donation) request.getAttribute("donation");
                 List<Recipient> recipients = (List<Recipient>) request.getAttribute("recipients");
             %>
-            <form action="<%= ctx %>/admin/dashboard" method="POST" class="donation-form">
-                <input type="hidden" name="action" value="updateDonation">
+            <form action="<%= ctx %>/donor/edit-donation" method="POST" class="donation-form">
                 <input type="hidden" name="donationId" value="<%= d.getId() %>">
-
-                <div class="form-group">
-                    <label>Donor</label>
-                    <input type="text" value="<%= d.getDonorName() %>" disabled>
-                </div>
 
                 <div class="form-group">
                     <label for="foodItem">Food Item *</label>
@@ -58,11 +52,12 @@
                     <div class="form-group">
                         <label for="category">Category</label>
                         <select id="category" name="category">
-                            <option value="Grains" <%= "Grains".equals(d.getCategory()) ? "selected" : "" %>>Grains</option>
-                            <option value="Dairy" <%= "Dairy".equals(d.getCategory()) ? "selected" : "" %>>Dairy</option>
-                            <option value="Fruits" <%= "Fruits".equals(d.getCategory()) ? "selected" : "" %>>Fruits</option>
-                            <option value="Canned" <%= "Canned".equals(d.getCategory()) ? "selected" : "" %>>Canned</option>
+                            <option value="Grains" <%= "Grains".equals(d.getCategory()) ? "selected" : "" %>>Grains &amp; Cereals</option>
+                            <option value="Dairy" <%= "Dairy".equals(d.getCategory()) ? "selected" : "" %>>Dairy Products</option>
+                            <option value="Fruits" <%= "Fruits".equals(d.getCategory()) ? "selected" : "" %>>Fruits &amp; Vegetables</option>
+                            <option value="Canned" <%= "Canned".equals(d.getCategory()) ? "selected" : "" %>>Canned Food</option>
                             <option value="Beverages" <%= "Beverages".equals(d.getCategory()) ? "selected" : "" %>>Beverages</option>
+                            <option value="Snacks" <%= "Snacks".equals(d.getCategory()) ? "selected" : "" %>>Snacks</option>
                             <option value="Other" <%= "Other".equals(d.getCategory()) ? "selected" : "" %>>Other</option>
                         </select>
                     </div>
@@ -73,9 +68,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="recipientId">Assign To (Recipient)</label>
+                    <label for="recipientId">Donate To (Recipient)</label>
                     <select id="recipientId" name="recipientId">
-                        <option value="">-- None --</option>
+                        <option value="">-- Select Recipient (Optional) --</option>
                         <% if (recipients != null) { for (Recipient r : recipients) { %>
                             <option value="<%= r.getId() %>" <%= r.getId() == d.getRecipientId() ? "selected" : "" %>>
                                 <%= r.getName() %> (<%= r.getOrganizationType() %>)

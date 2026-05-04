@@ -20,7 +20,6 @@ import jakarta.servlet.http.HttpSession;
  * 2. Wrong-role users are redirected to their correct dashboard
  * 3. Public paths (login, register, css, about) are whitelisted
  */
-@WebFilter("/*")
 public class AuthFilter implements Filter {
 
     @Override
@@ -75,10 +74,10 @@ public class AuthFilter implements Filter {
      */
     private boolean isPublicPath(String path) {
         return path.equals("/") ||
-               path.equals("/login") ||
-               path.equals("/register") ||
-               path.equals("/forgot-password") ||
-               path.equals("/about") ||
+               path.startsWith("/login") ||
+               path.startsWith("/register") ||
+               path.startsWith("/forgot-password") ||
+               path.startsWith("/about") ||
                path.startsWith("/css/") ||
                path.endsWith(".css") ||
                path.endsWith(".js") ||

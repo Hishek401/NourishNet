@@ -13,15 +13,17 @@ import jakarta.servlet.RequestDispatcher;
  * 
  * URL: /about
  */
-@WebServlet("/about")
 public class AboutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        jakarta.servlet.http.HttpSession session = request.getSession(false);
+        String userRole = (session != null) ? (String) session.getAttribute("userRole") : null;
+        
         request.setAttribute("pageTitle", "About Us");
-        request.setAttribute("pageType", "public");
+        request.setAttribute("pageType", (userRole != null) ? userRole : "public");
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/about.jsp");
         dispatcher.forward(request, response);

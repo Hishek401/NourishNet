@@ -159,6 +159,11 @@ public class UserService {
         return userDAO.getAllDonors();
     }
 
+    /** Search donors by name or email. */
+    public List<User> searchDonors(String query) {
+        return userDAO.searchDonors(query);
+    }
+
     /** Get user by ID. */
     public User getUserById(int id) {
         return userDAO.getUserById(id);

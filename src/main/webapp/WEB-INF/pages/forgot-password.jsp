@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- forgot-password.jsp - Password Reset Page --%>
-<%@ include file="common/header.jsp" %>
+<%@ include file="header.jsp" %>
 
     <div class="auth-container">
         <div class="auth-brand">
@@ -51,4 +51,4 @@
         </div>
     </div>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="footer.jsp" %>

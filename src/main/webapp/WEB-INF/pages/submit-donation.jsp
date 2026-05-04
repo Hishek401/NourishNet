@@ -3,7 +3,7 @@
 <%@ page import="com.NourishNet.model.Donation" %>
 <%@ page import="com.NourishNet.model.Recipient" %>
 <%-- submit-donation.jsp - Donation Submission Form with recipient selection --%>
-<%@ include file="common/header.jsp" %>
+<%@ include file="header.jsp" %>
 
     <div class="dashboard-container">
         <div class="dashboard-header">
@@ -83,4 +83,4 @@
         </div>
     </div>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="footer.jsp" %>

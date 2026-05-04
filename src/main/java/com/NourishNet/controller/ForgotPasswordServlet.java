@@ -17,7 +17,6 @@ import com.NourishNet.service.UserService;
  * GET  → Show forgot password form
  * POST → Process password reset
  */
-@WebServlet("/forgot-password")
 public class ForgotPasswordServlet extends HttpServlet {
 
     private UserService userService = new UserService();

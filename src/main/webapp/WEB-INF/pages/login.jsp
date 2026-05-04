@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- login.jsp - Login Page with forgot password link --%>
-<%@ include file="common/header.jsp" %>
+<%@ include file="header.jsp" %>
 
     <div class="auth-container">
+
         <div class="auth-brand">
             <div class="brand-content">
                 <div class="brand-icon">🍽️</div>
@@ -46,11 +47,15 @@
                 </form>
 
                 <div class="auth-footer">
-                    <p><a href="<%= ctx %>/forgot-password">Forgot your password?</a></p>
+                    <div style="margin-bottom: 15px; padding: 12px; border: 2px solid var(--primary); border-radius: 8px; background: var(--primary-bg);">
+                        <a href="<%= ctx %>/forgot-password" style="color: var(--primary-dark); font-weight: 800; text-decoration: underline; font-size: 16px;">
+                            🔑 FORGOT PASSWORD? RESET HERE
+                        </a>
+                    </div>
                     <p>Don't have an account? <a href="<%= ctx %>/register">Register here</a></p>
                 </div>
             </div>
         </div>
     </div>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="footer.jsp" %>

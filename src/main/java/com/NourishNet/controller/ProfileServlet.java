@@ -19,7 +19,6 @@ import com.NourishNet.service.UserService;
  * GET  → Show profile page
  * POST → Update profile details
  */
-@WebServlet("/donor/profile")
 public class ProfileServlet extends HttpServlet {
 
     private UserService userService = new UserService();

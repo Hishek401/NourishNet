@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.NourishNet.model.Donation" %>
 <%-- donor-dashboard.jsp - Donor Dashboard with search and cancel --%>
-<%@ include file="common/header.jsp" %>
+<%@ include file="header.jsp" %>
 
     <div class="dashboard-container">
         <div class="dashboard-header">
@@ -13,6 +13,11 @@
         <% if ("true".equals(request.getParameter("donated"))) { %>
             <div class="alert alert-success">
                 ✅ Your donation has been submitted successfully! It is pending admin approval.
+            </div>
+        <% } %>
+        <% if ("true".equals(request.getParameter("updated"))) { %>
+            <div class="alert alert-success">
+                ✅ Your donation has been updated successfully!
             </div>
         <% } %>
 
@@ -91,10 +96,11 @@
                                 </span>
                             </td>
                             <td><%= d.getCreatedAt() %></td>
-                            <td>
+                            <td class="actions-cell">
                                 <% if ("Pending".equals(d.getStatus())) { %>
+                                    <a href="<%= ctx %>/donor/edit-donation?id=<%= d.getId() %>" class="btn btn-sm btn-secondary">Edit</a>
                                     <form method="POST" action="<%= ctx %>/donor/dashboard"
-                                          onsubmit="return confirm('Cancel this donation?');">
+                                          onsubmit="return confirm('Cancel this donation?');" style="display:inline;">
                                         <input type="hidden" name="action" value="cancel">
                                         <input type="hidden" name="donationId" value="<%= d.getId() %>">
                                         <button type="submit" class="btn btn-sm btn-reject">Cancel</button>
@@ -118,4 +124,4 @@
         </div>
     </div>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="footer.jsp" %>

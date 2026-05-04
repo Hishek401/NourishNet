@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- about.jsp - About Page (Extra page beyond core CRUD) --%>
-<%@ include file="common/header.jsp" %>
+<%@ include file="header.jsp" %>
 
     <div class="dashboard-container">
         <div class="dashboard-header">
@@ -53,4 +53,4 @@
         </div>
     </div>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="footer.jsp" %>

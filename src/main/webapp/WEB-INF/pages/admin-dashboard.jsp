@@ -4,7 +4,7 @@
 <%@ page import="com.NourishNet.model.Donation" %>
 <%@ page import="com.NourishNet.model.Recipient" %>
 <%-- admin-dashboard.jsp - Admin Dashboard with full CRUD, search, unlock --%>
-<%@ include file="common/header.jsp" %>
+<%@ include file="header.jsp" %>
 
     <div class="dashboard-container">
         <div class="dashboard-header">
@@ -50,73 +50,7 @@
             </div>
         </div>
 
-        <%-- Create Donation Form (Admin CREATE) --%>
-        <div class="table-container">
-            <h2>Create New Donation</h2>
-            <%
-                List<User> donorList = (List<User>) request.getAttribute("donors");
-                List<Recipient> recipientList = (List<Recipient>) request.getAttribute("recipients");
-            %>
-            <form method="POST" action="<%= ctx %>/admin/dashboard" class="donation-form">
-                <input type="hidden" name="action" value="createDonation">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="createUserId">Donor</label>
-                        <select id="createUserId" name="userId" required>
-                            <option value="">-- Select Donor --</option>
-                            <% if (donorList != null) { for (User donor : donorList) { %>
-                                <option value="<%= donor.getId() %>"><%= donor.getFullName() %></option>
-                            <% } } %>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="createFoodItem">Food Item</label>
-                        <input type="text" id="createFoodItem" name="foodItem" placeholder="e.g., Rice" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="createQuantity">Qty</label>
-                        <input type="number" id="createQuantity" name="quantity" min="1" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="createUnit">Unit</label>
-                        <select id="createUnit" name="unit">
-                            <option value="kg">kg</option>
-                            <option value="liters">liters</option>
-                            <option value="packets">packets</option>
-                            <option value="pieces">pieces</option>
-                            <option value="cans">cans</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="createCategory">Category</label>
-                        <select id="createCategory" name="category">
-                            <option value="Grains">Grains</option>
-                            <option value="Dairy">Dairy</option>
-                            <option value="Fruits">Fruits</option>
-                            <option value="Canned">Canned</option>
-                            <option value="Beverages">Beverages</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="createExpiry">Expiry</label>
-                        <input type="date" id="createExpiry" name="expiryDate">
-                    </div>
-                    <div class="form-group">
-                        <label for="createRecipient">Recipient</label>
-                        <select id="createRecipient" name="recipientId">
-                            <option value="">-- None --</option>
-                            <% if (recipientList != null) { for (Recipient r : recipientList) { %>
-                                <option value="<%= r.getId() %>"><%= r.getName() %></option>
-                            <% } } %>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Create Donation</button>
-            </form>
-        </div>
+
 
         <%-- All Donations Table with Search --%>
         <div class="table-container">
@@ -204,7 +138,21 @@
 
         <%-- Registered Donors Table with Unlock --%>
         <div class="table-container">
-            <h2>Registered Donors</h2>
+            <div class="table-header-row">
+                <h2>Registered Donors</h2>
+                <form action="<%= ctx %>/admin/dashboard" method="GET" class="search-form">
+                    <input type="text" name="donorSearch" placeholder="Search donors by name or email..."
+                           value="<%= request.getAttribute("donorSearchQuery") != null ? request.getAttribute("donorSearchQuery") : "" %>"
+                           class="search-input">
+                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    <% if (request.getAttribute("donorSearchQuery") != null) { %>
+                        <a href="<%= ctx %>/admin/dashboard" class="btn btn-secondary btn-sm">Clear</a>
+                    <% } %>
+                </form>
+            </div>
+            <%
+                List<User> donorList = (List<User>) request.getAttribute("donors");
+            %>
             <% if (donorList != null && !donorList.isEmpty()) { %>
                 <table class="data-table">
                     <thead>
@@ -266,4 +214,4 @@
         </div>
     </div>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="footer.jsp" %>

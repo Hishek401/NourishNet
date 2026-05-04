@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- profile.jsp - User Profile Page (uses jsp:useBean and jsp:getProperty) --%>
-<%@ include file="common/header.jsp" %>
+<%@ include file="header.jsp" %>
 
     <%-- Using jsp:useBean and jsp:getProperty as required by Week 5 --%>
     <jsp:useBean id="profileUser" class="com.NourishNet.model.User" scope="request"/>
@@ -57,4 +57,4 @@
         </div>
     </div>
 
-<%@ include file="common/footer.jsp" %>
+<%@ include file="footer.jsp" %>

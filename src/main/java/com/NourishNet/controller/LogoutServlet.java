@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpSession;
  * URL: /logout
  * Destroys the session and redirects to login page.
  */
-@WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 
     @Override
