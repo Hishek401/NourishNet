@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    web.xml - Web Application Configuration File
+    
+    This file tells Tomcat how to run our web application.
+    It's like a settings file for the entire project.
+    
+    Location: src/main/webapp/WEB-INF/web.xml
+-->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <!-- Display name shown in Tomcat Manager -->
+    <display-name>NourishNet</display-name>
+
+    <!-- 
+        Welcome file: When someone visits http://localhost:8080/NourishNet/
+        without specifying a page, redirect them to the login page.
+    -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--
+        Session timeout: How long (in minutes) before an inactive user is logged out.
+        30 minutes means if they do nothing for 30 min, they must login again.
+    -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Custom error pages so users never see raw stack traces -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/error/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/error/500.jsp</location>
+    </error-page>
+
+</web-app>
